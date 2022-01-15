@@ -17,9 +17,10 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 from reviews import reviews_views
-
+from courses import courses_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('reviews/', reviews_views.all_reviews, name="all_reviews"),
+    path('courses/', courses_views.all_courses, name="all_courses")
 ]
