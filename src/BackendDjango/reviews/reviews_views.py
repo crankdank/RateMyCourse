@@ -19,3 +19,24 @@ def all_reviews(request):
 
     reviews_afterjson = ReviewSerializer(courses, many=True)
     return JsonResponse(reviews_afterjson.data, status=status.HTTP_200_OK, safe=False)
+
+
+@api_view(['GET', 'POST'])
+def post_reviews(request, course_num):
+    # GET a course's all review
+    if request.method == 'GET':
+        review = Review.objects.filter(course_num=course_num)
+        # except Review.DoesNotExist:
+        #     return JsonResponse({"error": "review is not found"}, status=status.HTTP_404_NOT_FOUND)
+        review_afterjson = ReviewSerializer(review, many=True)
+        return JsonResponse(review_afterjson.data, status=status.HTTP_200_OK, safe=False)
+
+    # POST a review for a specific course
+    elif request.method == 'POST':
+        jsonfied_data = JSONParser().parse(request)
+        serializer = ReviewSerializer(data=jsonfied_data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+    else:
+        return JsonResponse(status=status.HTTP_405_METHOD_NOT_ALLOWED)
