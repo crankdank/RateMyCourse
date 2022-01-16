@@ -32,7 +32,8 @@ def all_courses(request):
 
 # courses/<str:course_num>/
 @api_view(['GET', 'POST'])
-def get_or_post_course(request, course_num):
+def get_or_post_course(request, subject, number):
+    course_num = subject + number
     if request.method == 'GET':
         try:
             # course = Course.objects.filter(course_num=course_num)
