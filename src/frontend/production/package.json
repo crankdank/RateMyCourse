@@ -6,7 +6,7 @@
   "author": "",
   "source": "index.html",
   "scripts": {
-    "build": "parcel build *.html",
+    "build": "parcel build --public-url '.' *.html ",
     "dev": "parcel --open ",
     "start": "npm run build && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
