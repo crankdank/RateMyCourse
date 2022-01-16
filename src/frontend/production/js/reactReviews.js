@@ -41,7 +41,7 @@ function Review(props) {
   );
 }
 
-async function ReviewsList() {
+function ReviewsList() {
   let reviews = [{
     "professor": "Dr. Imanuelov",
     "semester": "WINTER22",
