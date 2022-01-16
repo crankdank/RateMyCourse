@@ -11,7 +11,7 @@ class Review(models.Model):
 
     # for now the course_num here includes the subject of courses (eg, CMPUT174)
     # will fix it later
-    course_num = models.CharField(max_length=20, blank=False)
+    course_num = models.CharField(max_length=20, blank=False, null=True)
 
     professor = models.CharField(max_length=30)
 
@@ -37,6 +37,6 @@ class Review(models.Model):
 
     comment = models.CharField(max_length=500, blank=True)
 
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField(auto_now_add=True, null=True)
 
 # * Date/Time field
