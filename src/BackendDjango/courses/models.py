@@ -13,7 +13,7 @@ class Course(models.Model):
 
     faculty = models.CharField(max_length=30, default="Faculty of Science")
     subject = models.CharField(max_length=10, default="CMPUT", blank=False)
-    number = models.CharField(max_length=5, blank=True, null=True)
+    course_num = models.CharField(max_length=5, blank=True, null=True)
     # course_num = models.CharField(max_length=20, blank=False, null=True)
     difficulty_level = models.IntegerField(default=3, validators=[MinValueValidator(0),
                                                                   MaxValueValidator(5)])
