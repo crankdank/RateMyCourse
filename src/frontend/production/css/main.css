@@ -10,22 +10,25 @@
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
+@font-face {
+  font-family: Akkurat-Mono;
+  src: url(/fonts/Akkurat-Mono.ttf);
+}
+@font-face {
+  font-family: "Summer Loving";
+  src: url("/fonts/Summer-Loving-Sans.otf");
+}
+
+:root {
+  --bgWhite: #FFFFFF;
+  --black: #111;
+}
 
 html {
   color: #222;
   font-size: 1em;
   line-height: 1.4;
 }
-
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * Vendor-prefixed and regular ::selection selectors cannot be combined:
- * https://stackoverflow.com/a/16982510/7133471
- *
- * Customize the background color to match your design.
- */
 
 ::-moz-selection {
   background: #b3d4fc;
@@ -86,6 +89,158 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+.main {
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  grid-template-rows: 4fr 3fr;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-content: center;
+
+  font-family: Akkurat-Mono, sans-serif;
+}
+
+.top-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+img.logo {
+  max-height: 2.5rem;
+}
+
+h1 {
+  font-family: "Summer Loving", sans-serif;
+  font-size: 8rem;
+  line-height: 8rem;
+  font-weight: normal;
+
+  color: var(--black);
+
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+
+  margin-bottom: 0.5rem;
+}
+
+div.input-background {
+  margin: 0 0.5rem;
+  background-color: var(--bgWhite);
+
+  border: 2px solid var(--black);
+  border-radius: 0.8rem;
+
+  filter: drop-shadow(0 4px 0 var(--black));
+
+  transition: all 0.2s ease;
+}
+
+div.input-background:focus-within {
+  filter: drop-shadow(0 0px 0 var(--black));
+  transform: translateY(4px);
+}
+
+input.search-input {
+  border: 0;
+  background: transparent;
+  padding: 0.9rem;
+
+  font-size: 1.7rem;
+}
+
+input:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+.course {
+  width: 10rem;
+}
+
+.number {
+  width: 4rem;
+  text-align: center;
+}
+
+p.search {
+  font-size: 1.2rem;
+  color: var(--black);
+}
+
+p.search:hover {
+  cursor: pointer;
+}
+
+.underline-text {
+  display: inline-block;
+  position: relative;
+}
+
+.underline-text:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--black);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.white-underline:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--bgWhite);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.underline-text:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.bottom-content {
+  width: 100%;
+  height: 100%;
+  background-image: url("/img/waves1.png");
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+p.post-review {
+  color: var(--bgWhite);
+  font-size: 1.2rem;
+}
+
+p.post-review:hover {
+  cursor: pointer;
+}
 
 /* ==========================================================================
    Helper classes
