@@ -95,14 +95,36 @@ def landing_function(request, subject_name):
             subject__contains=subject_name)
         if len(all_related_courses) == 0:
             return JsonResponse({"Warn": "Courses like this does not exist"}, status=status.HTTP_404_NOT_FOUND)
-        print(all_related_courses)
+        for i in range(0, len(all_related_courses)):
+            complete_name = all_related_courses[i].subject + \
+                all_related_courses[i].number
+            print(complete_name)
+            result = rate_help_function(complete_name)
+            print(result)
+            all_related_courses[i].average_workload = result["workload"]
+            all_related_courses[i].average_difficulty = result["difficulty"]
+            all_related_courses[i].average_usefulness = result["usefulness"]
+            all_related_courses[i].average_interest = result["interest"]
         courses_afterjson = CourseSerializer(all_related_courses, many=True)
-        course_json = courses_afterjson.data
-        course_json["aggregate"] = 5
         return JsonResponse(courses_afterjson.data, status=status.HTTP_200_OK, safe=False)
     else:
         return JsonResponse(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
-def rate_help_function(each_course):
-    pass
+def rate_help_function(complete_name):
+    reviews = Review.objects.filter(course_num=complete_name)
+    if len(reviews) == 0:
+        return {"difficulty": 0, "usefulness": 0, "workload": 0, "interest": 0}
+
+    sum = {"difficulty": 0, "usefulness": 0, "workload": 0, "interest": 0}
+    for i in range(0, len(reviews)):
+        sum["difficulty"] += reviews[i].difficulty
+        sum["usefulness"] += reviews[i].usefulness
+        sum["workload"] += reviews[i].workload
+        sum["interest"] += reviews[i].interest
+    sum["difficulty"] /= len(reviews)
+    sum["usefulness"] /= len(reviews)
+    sum["workload"] /= len(reviews)
+    sum["interest"] /= len(reviews)
+    average = sum
+    return average
