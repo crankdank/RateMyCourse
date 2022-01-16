@@ -6,19 +6,13 @@ a) courses/
 
 b) courses/<str:course_num>/
 - GET   
-    returns the detail of course with the given course_num
-    if course exist:
-        returns a list containing only one json object (ie, something like [{...}])
-    else:
-        returns an empty list
-
+    returns a list containing only one json object (ie, something like [{...}]) if it exists; Otherwise, returns an empty list
 - POST
+    post a new course
 
-c) courses/<str:course_num>/reviews/
+c) courses/<str:course_num>/rate/
 - GET
-
-d) courses/<str:course_num>/rate/
-- GET
+    returns {"overall_rate": <str:rate>} if course exists; otherwise, returns {"Warn": "This course does not have rate yet"}
 
 ** Example Course Json Format:
 #+BEGIN_SRC json
