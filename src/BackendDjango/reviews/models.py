@@ -21,24 +21,20 @@ class Review(models.Model):
     ]
     semester = models.CharField(
         max_length=10, choices=SEMESTER_CHOICES, blank=True)
-    overall_rate = models.IntegerField(validators=[MinValueValidator(0),
+    overall_rate = models.IntegerField(default=3, validators=[MinValueValidator(0),
                                        MaxValueValidator(5)])
+    difficulty = models.IntegerField(default=3, validators=[MinValueValidator(0),
+                                                            MaxValueValidator(5)])
+    usefulness = models.IntegerField(default=3, validators=[MinValueValidator(0),
+                                                            MaxValueValidator(5)])
+    workload = models.IntegerField(default=3, validators=[MinValueValidator(0),
+                                                          MaxValueValidator(5)])
 
-    DIFF_CHOICES = [
-        ('Easy', 'Easy'),
-        ('Moderate Easy', 'Moderate Easy'),
-        ('Medium', 'Medium'),
-        ('Moderate Hard', 'Moderate Hard'),
-        ('Hard', 'Hard'),
-    ]
-    diffculty = models.CharField(max_length=14,
-                                 choices=DIFF_CHOICES, blank=True)
-
-
-# * Usefulness
-# * Workload
-# * Interest
+    interest = models.IntegerField(default=3, validators=[MinValueValidator(0),
+                                                          MaxValueValidator(5)])
 
     comment = models.CharField(max_length=500, blank=True)
+
+    date = models.DateField(auto_now_add=True)
 
 # * Date/Time field
