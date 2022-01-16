@@ -1,30 +1,92 @@
 * Course
 
-a) courses/
+a) subject/
 - GET   
-    returns the list of all courses (list of json)
+    returns the list of all courses
+Example Return:
+#+BEGIN_SRC json
+[
+    {
+        "faculty": "Faculty of Science", 
+        "subject": "CMPUT", 
+        "course_num": "174", 
+        "assignedProfs": "TBA", 
+        "hasLab": false
 
-b) courses/<str:course_num>/
+        # For now the following fields are unreliable in this url
+        # , better use the landing (subject/<str:subject_name>/) for the scores
+        "average_workload": 3.0, 
+        "average_interest": 3.0, 
+        "average_usefulness": 3.0, 
+        "average_difficulty": 3.0, 
+        "grade": 3, 
+        "rating": 60, 
+    }, ...
+]
+#+END_SRC
+
+b) subject/<str:subject_name>/
 - GET   
-    returns a list containing only one json object (ie, something like [{...}]) if it exists; Otherwise, returns an empty list
+    returns a list of courses in the given subject
+
+Example Return:
+#+BEGIN_SRC json
+[
+    {
+        "faculty": "Faculty of Science", 
+        "subject": "CMPUT", 
+        "course_num": "174", 
+        "average_workload": 2.5,    # reliable scores
+        "average_interest": 3.0, 
+        "average_usefulness": 3.0, 
+        "average_difficulty": 3.5, 
+        "grade": 3, "rating": 60, 
+        "assignedProfs": "TBA", 
+        "hasLab": false
+    }, ...
+]
+#+END_SRC
+
+c) subject/<str:subject_name>/number/<str:course_num>/
+- GET
+    returns a list containing only the selected course; If the course does not exist, return empty list
+
 - POST
     post a new course
 
-c) courses/<str:course_num>/rate/
-- GET
-    returns {"overall_rate": <str:rate>} if course exists; otherwise, returns {"Warn": "This course does not have rate yet"}
+Example Return:
+#+BEGIN_SRC json
+[
+    {
+        "faculty": "Faculty of Science", 
+        "subject": "CMPUT", 
+        "course_num": "174", 
+        "assignedProfs": "TBA", 
+        "hasLab": false
 
-** Example Course Json Format:
+        # For now the following fields are unreliable in this url
+        # , better use the landing (subject/<str:subject_name>/) for the scores
+        "average_workload": 3.0, 
+        "average_interest": 3.0, 
+        "average_usefulness": 3.0, 
+        "average_difficulty": 3.0, 
+        "grade": 3, 
+        "rating": 60, 
+    }
+]
+#+END_SRC
+
+
+d) subject/<str:subject_name>/number/<str:course_num>/rate/
+- GET
+    returns the scores of the selected course
 #+BEGIN_SRC json
 {
-    "faculty" : "Department of Computer Science",
-    "course_num" : "CMPUT174",
-    "title" : "Introduction to CS",
-    "topics" : "I am groot, I am groot~!",
-    "difficulty" : 5,
-    "rating" : 100,
-    "assignedProfs" : "Abram Hindle",
-    "hasLab" : True
+    "difficulty": 3.5, 
+    "usefulness": 3.0, 
+    "workload": 2.5, 
+    "interest": 3.0, 
+    "aggregate": 2.5
 }
 #+END_SRC
 
