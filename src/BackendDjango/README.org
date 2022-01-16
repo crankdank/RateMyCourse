@@ -27,3 +27,22 @@ c) courses/<str:course_num>/rate/
     "hasLab" : True
 }
 #+END_SRC
+
+* Review:
+a) URL: http://localhost:8000/courses/CMPUT174/reviews/
+GET: It will get all the reviews for CMPUT174 course
+
+POST: It will add a review for CMPUT174 course
+** Example Review Json Format:
+#+BEGIN_SRC json
+{
+"course_num":"CMPUT174",
+"professor": "Dr.12345",
+"semester": "WINTER",
+"overall_rate":"5",
+"diffculty":"Hard"
+}
+#+END_SRC
+
+b) URL: http://localhost:8000/reviews/
+GET: It will prompt out all the reviews in this RMC website
