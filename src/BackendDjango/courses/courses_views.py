@@ -1,4 +1,5 @@
 import imp
+from tkinter import E
 from django.shortcuts import render
 
 from .models import Course
@@ -17,3 +18,10 @@ def all_courses(request):
 
     courses_json = CourseSerializer(courses, many=True)
     return JsonResponse(courses_json.data, status=status.HTTP_200_OK, safe=False)
+
+@api_view(['POST'])
+def add_course(request):
+    try:
+        pass
+    except Exception as e:
+        pass
