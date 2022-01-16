@@ -23,7 +23,8 @@ document.querySelector("p.search").addEventListener("click", async (e) => {
     let para = new URLSearchParams();
     para.append("subj", subject);
     para.append("num", number);
-    window.open("/details.html?" + para.toString(), "_self");
+    window.open("./details.html?" + para.toString(), "_self");
+
   } catch (e) {
     swal({
       title: "Error!",
