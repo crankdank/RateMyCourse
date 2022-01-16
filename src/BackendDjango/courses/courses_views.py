@@ -60,18 +60,27 @@ def get_or_post_course(request, course_num):
 # courses/<str:course_num>/rate/
 
 @api_view(['GET'])
-def get_course_rate(request, course_num):
+def get_course_rate(request, subject, number):
     if request.method == 'GET':
+        # get all reviews for 
+        # difficulty, usefulness, workload, interest
+        course_num = subject + number
         all_review = Review.objects.filter(course_num=course_num)
         if len(all_review) == 0:
             return JsonResponse({"Warn": "This course does not have rate yet"}, status=status.HTTP_404_NOT_FOUND)
 
-        sum = 0
-        for i in range(0, len(all_review)):
-            sum += all_review[i].overall_rate
-        print(sum)
-        average = sum/len(all_review)
-        review_afterjson = ReviewSerializer(all_review, many=True)
-        return JsonResponse({"overall_rate": str(average)}, status=status.HTTP_200_OK, safe=False)
+        sum = {"difficulty": 0, "usefulness": 0, "workload": 0, "interest": 0}
+        num_of_review = len(all_review)
+        for i in range(0, num_of_review):
+            sum["difficulty"] += all_review[i].difficulty
+            sum["usefulness"] += all_review[i].usefulness
+            sum["workload"] += all_review[i].workload
+            sum["interest"] += all_review[i].interest
+        
+        #print(sum)
+        rates = dict([(key, sum[key] / num_of_review) for key in sum.keys()])
+        rates["aggregate"] = ((10 - rates["difficulty"] - rates["workload"]) + rates["usefulness"] + rates["interest"]) / 4
+        #review_afterjson = ReviewSerializer(all_review, many=True)
+        return JsonResponse(rates, status=status.HTTP_200_OK, safe=False)
     else:
         return JsonResponse(status=status.HTTP_405_METHOD_NOT_ALLOWED)
