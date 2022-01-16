@@ -222,12 +222,19 @@ div.table {
 }
 
 div.react-root {
-  width: 80%;
+  width: clamp(300px, 80%, 1400px);
   margin: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+h1.reviews-header {
+  font-size: 5rem;
+  line-height: 5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 div.reviews {
@@ -250,6 +257,7 @@ div.review {
   justify-content: center;
 
   width: 100%;
+  margin: 1rem 0;
   padding: 1rem;
 
   background-color: var(--bgWhite);
