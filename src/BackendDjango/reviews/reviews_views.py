@@ -22,7 +22,7 @@ def all_reviews(request):
 
 
 @api_view(['GET', 'POST'])
-def post_reviews(request, course_num):
+def get_post_reviews(request, course_num):
     # GET a course's all review
     if request.method == 'GET':
         review = Review.objects.filter(course_num=course_num)

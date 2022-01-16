@@ -1,0 +1,48 @@
+* Course
+
+a) courses/
+- GET   
+    returns the list of all courses (list of json)
+
+b) courses/<str:course_num>/
+- GET   
+    returns a list containing only one json object (ie, something like [{...}]) if it exists; Otherwise, returns an empty list
+- POST
+    post a new course
+
+c) courses/<str:course_num>/rate/
+- GET
+    returns {"overall_rate": <str:rate>} if course exists; otherwise, returns {"Warn": "This course does not have rate yet"}
+
+** Example Course Json Format:
+#+BEGIN_SRC json
+{
+    "faculty" : "Department of Computer Science",
+    "course_num" : "CMPUT174",
+    "title" : "Introduction to CS",
+    "topics" : "I am groot, I am groot~!",
+    "difficulty" : 5,
+    "rating" : 100,
+    "assignedProfs" : "Abram Hindle",
+    "hasLab" : True
+}
+#+END_SRC
+
+* Review:
+a) URL: http://localhost:8000/courses/CMPUT174/reviews/
+GET: It will get all the reviews for CMPUT174 course
+
+POST: It will add a review for CMPUT174 course
+** Example Review Json Format:
+#+BEGIN_SRC json
+{
+"course_num":"CMPUT174",
+"professor": "Dr.12345",
+"semester": "WINTER",
+"overall_rate":"5",
+"diffculty":"Hard"
+}
+#+END_SRC
+
+b) URL: http://localhost:8000/reviews/
+GET: It will prompt out all the reviews in this RMC website
