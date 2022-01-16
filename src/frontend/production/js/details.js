@@ -50,11 +50,12 @@ async function populate() {
   );
 
   document.querySelector("p.back").addEventListener("click", (e) => {
-    window.open("./", "_self");
+    window.open("./index.html", "_self");
   })
 
   // Set all course data
   document.querySelector("#title").innerHTML = `${courseInfo.subject} ${courseInfo.course_num}`;
+  window.document.title = `${courseInfo.subject} ${courseInfo.course_num}`;
   document.querySelector("#fac").innerHTML = `Faculty of ${courseInfo.faculty}`;
   document.querySelector("#overallRating").innerHTML = `${courseInfo.average_overall.toFixed(1)}`;
   document.querySelector("#diff").innerHTML = `${courseInfo.average_difficulty.toFixed(1)}`;

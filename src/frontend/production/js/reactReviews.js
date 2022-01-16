@@ -41,8 +41,8 @@ function Review(props) {
   );
 }
 
-function ReviewsList() {
-  const reviews = [{
+async function ReviewsList() {
+  let reviews = [{
     "professor": "Dr. Imanuelov",
     "semester": "WINTER22",
     "course_num": "401",
@@ -86,6 +86,31 @@ function ReviewsList() {
       "            voluptatibus.",
     "date": "2015-01-16"
   }];
+
+  /*
+  const [data, setData] = useState({ hits: [] });
+
+
+  useEffect(async () => {
+    const params = new URLSearchParams((new URL(window.location.href)).search);
+
+    const subject = params.get("subj");
+    const courseNumber = params.get("num");
+
+    let reviews = (await (await fetch(`http://localhost:8000/subject/${subject}/number/${courseNumber}/reviews`)).json());
+
+    setData(reviews.data);
+  }, []);
+
+  useEffect(async () => {
+    const params = new URLSearchParams((new URL(window.location.href)).search);
+
+    const subject = params.get("subj");
+    const courseNumber = params.get("num");
+
+    let reviews = (await (await fetch(`http://localhost:8000/subject/${subject}/number/${courseNumber}/reviews`)).json());
+  });*/
+
   return (
     <div className="reviews">
       <h1 className="reviews-header">REVIEWS</h1>
@@ -94,4 +119,6 @@ function ReviewsList() {
   );
 }
 
-ReactDOM.render(<ReviewsList/>, document.querySelector("div.react-root"));
+ReactDOM.render(
+  <ReviewsList/>, document.querySelector("div.react-root")
+);
