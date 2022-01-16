@@ -61,11 +61,11 @@ def get_or_post_course(request, subject, number):
 # courses/<str:course_num>/rate/
 
 @api_view(['GET'])
-def get_course_rate(request, subject, number):
+def get_course_rate(request, subject_name, course_num):
     if request.method == 'GET':
-        # get all reviews for 
+        # get all reviews for
         # difficulty, usefulness, workload, interest
-        course_num = subject + number
+        course_num = subject_name + course_num
         all_review = Review.objects.filter(course_num=course_num)
         if len(all_review) == 0:
             return JsonResponse({"Warn": "This course does not have rate yet"}, status=status.HTTP_404_NOT_FOUND)
@@ -77,11 +77,30 @@ def get_course_rate(request, subject, number):
             sum["usefulness"] += all_review[i].usefulness
             sum["workload"] += all_review[i].workload
             sum["interest"] += all_review[i].interest
-        
-        #print(sum)
+
+        # print(sum)
         rates = dict([(key, sum[key] / num_of_review) for key in sum.keys()])
-        rates["aggregate"] = ((10 - rates["difficulty"] - rates["workload"]) + rates["usefulness"] + rates["interest"]) / 4
+        rates["aggregate"] = ((10 - rates["difficulty"] - rates["workload"]
+                               ) + rates["usefulness"] + rates["interest"]) / 4
         #review_afterjson = ReviewSerializer(all_review, many=True)
         return JsonResponse(rates, status=status.HTTP_200_OK, safe=False)
     else:
         return JsonResponse(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
+@api_view(['GET'])
+def landing_function(request, subject_name):
+    if request.method == 'GET':
+        all_related_courses = Course.objects.filter(
+            subject__contains=subject_name)
+        if len(all_related_courses) == 0:
+            return JsonResponse({"Warn": "Courses like this does not exist"}, status=status.HTTP_404_NOT_FOUND)
+        print(all_related_courses)
+        courses_afterjson = CourseSerializer(all_related_courses, many=True)
+        return JsonResponse(courses_afterjson.data, status=status.HTTP_200_OK, safe=False)
+    else:
+        return JsonResponse(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
+def rate_help_function(each_course):
+    pass

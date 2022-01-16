@@ -21,16 +21,27 @@ from courses import courses_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+
+
     # review section url
     path('reviews/', reviews_views.all_reviews, name="all_reviews"),
-    path('courses/<str:course_num>/reviews/',
+    # GET: this will return all the reviews for this specific course; POST: this will add an review for this specific course
+    path('subject/<str:subject_name>/number/<str:course_num>/reviews/',
          reviews_views.get_post_reviews, name="get_post_reviews"),
+
+
+
+
     # course secrion url
 
-    path('courses/<str:course_num>/rate/',
+    # this will return all the courses related to the subject and their average values. For example, input CMPUT, it will output CMPUT174, CMPUT175...
+    path('subject/<str:subject_name>/',
+         courses_views.landing_function, name="landing_function"),
+    path('subject/<str:subject_name>/number/<str:course_num>/rate/',  # this will return the average values for this specific course
          courses_views.get_course_rate, name="get_course_rate"),
     path('courses/<str:course_num>/',
          courses_views.get_or_post_course, name="get_or_post_course"),
-    path('courses/', courses_views.all_courses, name="all_courses"),
+    path('courses/', courses_views.all_courses, name="all_courses")
 
 ]

@@ -22,10 +22,11 @@ def all_reviews(request):
 
 
 @api_view(['GET', 'POST'])
-def get_post_reviews(request, course_num):
+def get_post_reviews(request, subject_name, course_num):
     # GET a course's all review
+    full_course = subject_name+course_num
     if request.method == 'GET':
-        review = Review.objects.filter(course_num=course_num)
+        review = Review.objects.filter(course_num=full_course)
         # except Review.DoesNotExist:
         #     return JsonResponse({"error": "review is not found"}, status=status.HTTP_404_NOT_FOUND)
         review_afterjson = ReviewSerializer(review, many=True)
