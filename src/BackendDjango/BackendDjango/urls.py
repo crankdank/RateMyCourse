@@ -40,8 +40,8 @@ urlpatterns = [
          courses_views.landing_function, name="landing_function"),
     path('subject/<str:subject_name>/number/<str:course_num>/rate/',  # this will return the average values for this specific course
          courses_views.get_course_rate, name="get_course_rate"),
-    path('courses/<str:course_num>/',
+    path('subject/<str:subject_name>/number/<str:course_num>/',
          courses_views.get_or_post_course, name="get_or_post_course"),
-    path('courses/', courses_views.all_courses, name="all_courses")
+    path('subject/', courses_views.all_courses, name="all_courses")
 
 ]

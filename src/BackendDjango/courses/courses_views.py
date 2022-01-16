@@ -32,8 +32,8 @@ def all_courses(request):
 
 # courses/<str:course_num>/
 @api_view(['GET', 'POST'])
-def get_or_post_course(request, subject, number):
-    course_num = subject + number
+def get_or_post_course(request, subject_name, course_num):
+    course_num = subject_name + course_num
     if request.method == 'GET':
         try:
             # course = Course.objects.filter(course_num=course_num)
@@ -65,8 +65,8 @@ def get_course_rate(request, subject_name, course_num):
     if request.method == 'GET':
         # get all reviews for
         # difficulty, usefulness, workload, interest
-        course_num = subject_name + course_num
-        all_review = Review.objects.filter(course_num=course_num)
+        course_code = subject_name + course_num
+        all_review = Review.objects.filter(course_num=course_code)
         if len(all_review) == 0:
             return JsonResponse({"Warn": "This course does not have rate yet"}, status=status.HTTP_404_NOT_FOUND)
 
