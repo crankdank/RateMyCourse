@@ -30,10 +30,12 @@
       <h1>RATEMYCOURSE</h1>
       <div class="search-container">
         <div class="input-background">
-          <input type="text" placeholder="CMPUT" class="search-input course">
+          <label class="hidden" for="csub">Course Subject (eg. CMPUT)</label>
+          <input id="csub" type="text" placeholder="CMPUT" class="search-input course"/>
         </div>
         <div class="input-background">
-          <input type="text" placeholder="401" maxlength="3" class="search-input number">
+          <label class="hidden" for="cnum">Course Number (eg. 401)</label>
+          <input id="cnum" type="text" placeholder="401" maxlength="3" class="search-input number"/>
         </div>
       </div>
       <p class="search underline-text">

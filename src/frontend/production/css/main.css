@@ -160,6 +160,8 @@ input.search-input {
   background: transparent;
   padding: 0.9rem;
 
+  text-transform: uppercase;
+
   font-size: 1.7rem;
 }
 

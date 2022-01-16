@@ -38,7 +38,7 @@ function Review(props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function ReviewsList() {
