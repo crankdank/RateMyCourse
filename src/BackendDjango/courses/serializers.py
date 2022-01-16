@@ -10,7 +10,7 @@ class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
         fields = ["faculty", "subject", "number",
-                  "difficulty_level", 'grade', "rating", "assignedProfs", "hasLab"]
+                  "average_workload", 'average_interest', 'average_usefulness', 'average_difficulty', 'grade', "rating", "assignedProfs", "hasLab"]
         constants = [
             models.CheckConstraint(
                 check=models.Q(difficulty__gte=1) & models.Q(

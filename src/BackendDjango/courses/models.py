@@ -15,8 +15,6 @@ class Course(models.Model):
     subject = models.CharField(max_length=10, default="CMPUT", blank=False)
     number = models.CharField(max_length=5, blank=True, null=True)
     # course_num = models.CharField(max_length=20, blank=False, null=True)
-    difficulty_level = models.IntegerField(default=3, validators=[MinValueValidator(0),
-                                                                  MaxValueValidator(5)])
     # title = models.CharField(max_length=50, null=True)
     # topics = models.TextField(max_length=200, null=True)
     grade = models.IntegerField(default=3, null=False)
@@ -25,3 +23,12 @@ class Course(models.Model):
 
     assignedProfs = models.CharField(max_length=200, default="TBA")
     hasLab = models.BooleanField(default=False)
+
+    average_workload = models.FloatField(default=3, validators=[MinValueValidator(0),
+                                                                MaxValueValidator(5)])
+    average_interest = models.FloatField(default=3, validators=[MinValueValidator(0),
+                                                                MaxValueValidator(5)])
+    average_usefulness = models.FloatField(default=3, validators=[MinValueValidator(0),
+                                                                  MaxValueValidator(5)])
+    average_difficulty = models.FloatField(default=3, validators=[MinValueValidator(0),
+                                                                  MaxValueValidator(5)])
