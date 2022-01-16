@@ -1,0 +1,2 @@
+function getValueOrPlaceholderSelector(e){let l=document.querySelector(e);return""===l.value?l.placeholder:l.value}document.querySelector("p.search").addEventListener("click",(e=>{let l=getValueOrPlaceholderSelector("#csub").toUpperCase(),r=getValueOrPlaceholderSelector("#cnum").toUpperCase(),t=new URLSearchParams;t.append("subj",l),t.append("num",r),window.open("/details.html?"+t.toString(),"_self")}));
+//# sourceMappingURL=index.90067e7b.js.map

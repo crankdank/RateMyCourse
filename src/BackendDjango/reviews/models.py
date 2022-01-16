@@ -14,7 +14,10 @@ class Review(models.Model):
 
     # for now the course_num here includes the subject of courses (eg, CMPUT174)
     # will fix it later
-    course_num = models.CharField(max_length=20, blank=False, null=True)
+    subject = models.CharField(max_length=10, default="CMPUT", blank=False)
+    course_num = models.CharField(max_length=5, blank=True, null=True)
+
+    #course_num = models.CharField(max_length=20, blank=False, null=True)
 
     professor = models.CharField(max_length=30)
 
@@ -38,7 +41,9 @@ class Review(models.Model):
     interest = models.IntegerField(default=3, validators=[MinValueValidator(0),
                                                           MaxValueValidator(5)])
 
-    comment = models.CharField(max_length=500, blank=True)
+    comment = models.TextField(max_length=500, blank=True)
+
+    ccid = models.CharField(max_length=20, default="anonymous")
 
     date = models.DateField(auto_now_add=True, null=True)
 

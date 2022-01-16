@@ -9,8 +9,8 @@ from django.db import models
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
-        fields = ["faculty", "subject", "course_num",
-                  "average_workload", 'average_interest', 'average_usefulness', 'average_difficulty', 'grade', "rating", "assignedProfs", "hasLab"]
+        fields = ["faculty", "subject", "course_num", "average_overall",
+                  "average_workload", 'average_interest', 'average_usefulness', 'average_difficulty', "assignedProfs", "hasLab"]
         constants = [
             models.CheckConstraint(
                 check=models.Q(difficulty__gte=1) & models.Q(

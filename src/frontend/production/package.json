@@ -12,11 +12,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
     "@parcel/packager-raw-url": "^2.2.0",
     "@parcel/transformer-webmanifest": "^2.2.0",
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.16.8",
     "parcel": "^2.2.0"
   }
 }
