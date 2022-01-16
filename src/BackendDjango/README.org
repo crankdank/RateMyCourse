@@ -1,4 +1,4 @@
-### Course
+*** Course
 
 1. courses/
 
