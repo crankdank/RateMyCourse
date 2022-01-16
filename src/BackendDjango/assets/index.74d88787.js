@@ -145,7 +145,7 @@
         }
     }, Modernizr = function() {
     };
-    Modernizr.prototype = C, Modernizr = new Modernizr;
+    Modernizr.prototype = C, Modernizr = new Modernizr();
     var b = [], _ = n1.documentElement, S = "svg" === _.nodeName.toLowerCase(), x = "Moz O ms Webkit", T = C._config.usePrefixes ? x.toLowerCase().split(" ") : [];
     C._domPrefixes = T;
     var P = C._config.usePrefixes ? " -webkit- -moz- -o- -ms- ".split(" ") : [
