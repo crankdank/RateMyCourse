@@ -1,7 +1,6 @@
 * Course
 
-a) subject/
-URL: http://localhost:8000/subject/
+a) URL: http://localhost:8000/subject/
 - GET   
     returns the list of all courses
 Example Return:
@@ -13,21 +12,16 @@ Example Return:
         "course_num": "174", 
         "assignedProfs": "TBA", 
         "hasLab": false
-
-        # For now the following fields are unreliable in this url
-        # , better use the landing (subject/<str:subject_name>/) for the scores
+        "average_overall": 2.5,
         "average_workload": 3.0, 
         "average_interest": 3.0, 
         "average_usefulness": 3.0, 
         "average_difficulty": 3.0, 
-        "grade": 3, 
-        "rating": 60, 
     }, ...
 ]
 #+END_SRC
 
-b) subject/<str:subject_name>/
-URL:http://localhost:8000/subject/CMPUT/
+b) URL:http://localhost:8000/subject/CMPUT/
 - GET   
     returns a list of courses in the given subject
 
@@ -38,13 +32,13 @@ Example Return:
         "faculty": "Faculty of Science", 
         "subject": "CMPUT", 
         "course_num": "174", 
-        "average_workload": 2.5,    # reliable scores
-        "average_interest": 3.0, 
-        "average_usefulness": 3.0, 
-        "average_difficulty": 3.5, 
-        "grade": 3, "rating": 60, 
         "assignedProfs": "TBA", 
         "hasLab": false
+        "average_overall": 2.5,
+        "average_workload": 3.0, 
+        "average_interest": 3.0, 
+        "average_usefulness": 3.0, 
+        "average_difficulty": 3.0, 
     }, ...
 ]
 #+END_SRC
@@ -58,40 +52,36 @@ URL: http://localhost:8000/subject/CMPUT/
     post a new course
 
 ** Example POST Json Body:
-#+BEGIN_SRC json
 {
-    "faculty": "Faculty of Science",
-    "subject": "CMPUT",
-    "course_num": "175",
-    "average_workload": 2.0,
-    "average_interest": 2.0,
-    "average_usefulness": 2.0,
-    "average_difficulty": 2.0,
-    "grade": 2,
-    "rating": 60,
-    "assignedProfs": "TBA",
+    "faculty": "Faculty of Science", 
+    "subject": "CMPUT", 
+    "course_num": "174", 
+    "assignedProfs": "TBA", 
     "hasLab": false
+    "average_overall": 2.5,
+    "average_workload": 3.0, 
+    "average_interest": 3.0, 
+    "average_usefulness": 3.0, 
+    "average_difficulty": 3.0, 
 }
+
 #+END_SRC
 
 Example Return:
 #+BEGIN_SRC json
 [
+    # There should be one json object in the list
     {
         "faculty": "Faculty of Science", 
         "subject": "CMPUT", 
         "course_num": "174", 
         "assignedProfs": "TBA", 
         "hasLab": false
-
-        # For now the following fields are unreliable in this url
-        # , better use the landing (subject/<str:subject_name>/) for the scores
+        "average_overall": 2.5,
         "average_workload": 3.0, 
         "average_interest": 3.0, 
         "average_usefulness": 3.0, 
         "average_difficulty": 3.0, 
-        "grade": 3, 
-        "rating": 60, 
     }
 ]
 #+END_SRC
@@ -107,7 +97,7 @@ URL:http://localhost:8000/subject/CMPUT/number/174/rate/
     "usefulness": 3.0, 
     "workload": 2.5, 
     "interest": 3.0, 
-    "aggregate": 2.5
+    "overall": 2.5
 }
 #+END_SRC
 
@@ -120,13 +110,15 @@ GET: It will get a list of all the reviews for the course
     {
     "professor": "Dr.T", 
     "semester": "WINTER", 
-    "course_num": "CMPUT174", 
+    "subject": "CMPUT"
+    "course_num": "174", 
     "overall_rate": 1, 
     "difficulty": 1, 
     "usefulness": 1, 
     "workload": 1, 
     "interest": 1, 
-    "comment": "123", 
+    "ccid": "anonymous",    # This field is "anonymous" by default
+    "comment": "I am groot!", 
     "date": "2022-01-16"
     }
 ]
@@ -136,16 +128,18 @@ POST: It will add a review for a course
 ** Example POST Json Body:
 #+BEGIN_SRC json
 {
-    
     "professor": "Dr.T", 
     "semester": "WINTER", 
-    "course_num": "CMPUT174", 
+    "subject": "CMPUT"
+    "course_num": "174", 
     "overall_rate": 1, 
     "difficulty": 1, 
     "usefulness": 1, 
     "workload": 1, 
     "interest": 1, 
-    "comment": "123", 
+    "ccid": "ztan4",
+    "comment": "I am groot!", 
+    "date": "2022-01-16"
 }
 #+END_SRC
 

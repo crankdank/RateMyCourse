@@ -11,7 +11,7 @@ class Course(models.Model):
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, unique=True)
 
-    faculty = models.CharField(max_length=30, default="Faculty of Science")
+    faculty = models.CharField(max_length=30, default="Science")
     subject = models.CharField(max_length=10, default="CMPUT", blank=False)
     course_num = models.CharField(max_length=5, blank=True, null=True)
     # course_num = models.CharField(max_length=20, blank=False, null=True)
