@@ -150,8 +150,9 @@ div.input-background {
   transition: all 0.2s ease;
 }
 
-div.input-background:hover {
+div.input-background:focus-within {
   filter: drop-shadow(0 0px 0 var(--black));
+  transform: translateY(4px);
 }
 
 input.search-input {
