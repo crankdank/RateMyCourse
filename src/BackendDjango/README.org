@@ -1,4 +1,24 @@
-\*\*\* Course - URL: ://courses/<str:course_num>/ - GET - POST - Example Course Json Format:
+### Course
+
+1. courses/
+
+- GET
+
+2. courses/<str:course_num>/
+
+- GET
+- POST
+
+3. courses/<str:course_num>/reviews/
+
+- GET
+
+4. courses/<str:course_num>/rate/
+
+- GET
+
+- Example Course Json Format:
+
 #+BEGIN_SRC json
 {
 "faculty" : "Department of Computer Science",
