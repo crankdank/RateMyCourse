@@ -1,15 +1,18 @@
+from time import time
 from django.db import models
 import uuid
 from django.core.validators import MinValueValidator, MaxValueValidator
-
+import datetime
 
 # Create your models here.
+
+
 class Review(models.Model):
     # field in db
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=True, unique=True)
 
-    course_num = models.CharField(max_length=20, blank=False)
+    course_num = models.CharField(max_length=20, null=True)
 
     professor = models.CharField(max_length=30)
 
@@ -35,6 +38,6 @@ class Review(models.Model):
 
     comment = models.CharField(max_length=500, blank=True)
 
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField(auto_now_add=True, null=True)
 
 # * Date/Time field

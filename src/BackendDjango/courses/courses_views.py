@@ -37,7 +37,8 @@ def get_or_post_course(request, subject_name, course_num):
     if request.method == 'GET':
         try:
             # course = Course.objects.filter(course_num=course_num)
-            course = Course.objects.filter(course_num__contains=course_num)
+            complete_name = subject_name+course_num
+            course = Course.objects.filter(course_num=course_num)
             # except Review.DoesNotExist:
             #     return JsonResponse({"error": "review is not found"}, status=status.HTTP_404_NOT_FOUND)
             course_json = CourseSerializer(course, many=True)
@@ -97,7 +98,7 @@ def landing_function(request, subject_name):
             return JsonResponse({"Warn": "Courses like this does not exist"}, status=status.HTTP_404_NOT_FOUND)
         for i in range(0, len(all_related_courses)):
             complete_name = all_related_courses[i].subject + \
-                all_related_courses[i].number
+                all_related_courses[i].course_num
             print(complete_name)
             result = rate_help_function(complete_name)
             print(result)
