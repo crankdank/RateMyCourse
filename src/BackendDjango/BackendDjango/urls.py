@@ -24,7 +24,7 @@ urlpatterns = [
     # review section url
     path('reviews/', reviews_views.all_reviews, name="all_reviews"),
     path('courses/<str:course_num>/reviews/',
-         reviews_views.post_reviews, name="post_reviews"),
+         reviews_views.get_post_reviews, name="get_post_reviews"),
     # course secrion url
 
     path('courses/<str:course_num>/rate/',

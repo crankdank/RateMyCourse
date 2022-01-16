@@ -16,6 +16,8 @@ from reviews.serializers import ReviewSerializer
 
 # Create your views here.
 
+# courses/
+
 
 @api_view(['GET'])
 def all_courses(request):
@@ -28,13 +30,13 @@ def all_courses(request):
     return JsonResponse(courses_json.data, status=status.HTTP_200_OK, safe=False)
 
 
+# courses/<str:course_num>/
 @api_view(['GET', 'POST'])
 def get_or_post_course(request, course_num):
     if request.method == 'GET':
         try:
             # course = Course.objects.filter(course_num=course_num)
             course = Course.objects.filter(course_num__contains=course_num)
-            print(course)
             # except Review.DoesNotExist:
             #     return JsonResponse({"error": "review is not found"}, status=status.HTTP_404_NOT_FOUND)
             course_json = CourseSerializer(course, many=True)
@@ -54,6 +56,8 @@ def get_or_post_course(request, course_num):
     else:
         return JsonResponse(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
+
+# courses/<str:course_num>/rate/
 
 @api_view(['GET'])
 def get_course_rate(request, course_num):
