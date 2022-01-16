@@ -29,3 +29,4 @@ const myChart = new Chart(
   document.getElementById('doughnutChart'),
   config
 );
+
