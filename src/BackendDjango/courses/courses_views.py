@@ -33,11 +33,10 @@ def all_courses(request):
 # courses/<str:course_num>/
 @api_view(['GET', 'POST'])
 def get_or_post_course(request, subject_name, course_num):
-    course_num = subject_name + course_num
     if request.method == 'GET':
         try:
             # course = Course.objects.filter(course_num=course_num)
-            course = Course.objects.filter(course_num__contains=course_num)
+            course = Course.objects.filter(subject=subject_name).filter(course_num=course_num)
             # except Review.DoesNotExist:
             #     return JsonResponse({"error": "review is not found"}, status=status.HTTP_404_NOT_FOUND)
             course_json = CourseSerializer(course, many=True)
