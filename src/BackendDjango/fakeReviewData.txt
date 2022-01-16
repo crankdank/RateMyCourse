@@ -1,0 +1,130 @@
+{
+    "professor": "Dr. Matthew Blake",
+    "semester": "SPRING22",
+    "course_num": "CMPUT174",
+    "overall_rate": 2,
+    "difficulty": 4,
+    "usefulness": 3,
+    "workload": 5,
+    "interest": 4,
+    "comment": "Labore quiquia modi eius non. Ut quiquia etincidunt velit ut sit eius. Ipsum magnam amet etincidunt. Quaerat adipisci quisquam sed. Amet velit adipisci quiquia neque etincidunt. Aliquam est non etincidunt voluptatem quiquia.",
+    "ccid": "mattheblake",
+    "date": "2022-01-16"
+}
+{
+    "professor": "Dr. Gabrielle Windle",
+    "semester": "SPRING20",
+    "course_num": "CMPUT174",
+    "overall_rate": 3,
+    "difficulty": 2,
+    "usefulness": 1,
+    "workload": 1,
+    "interest": 2,
+    "comment": "Labore aliquam consectetur consectetur non dolorem sit neque. Magnam consectetur ut quaerat consectetur adipisci etincidunt. Non modi ipsum dolorem adipisci sed porro. Non est modi velit. Magnam dolorem modi sed etincidunt eius. Dolorem consectetur numquam adipisci dolore velit quaerat. Consectetur modi labore dolor. Ut eius velit porro. Magnam eius velit aliquam tempora non etincidunt.",
+    "ccid": "gawindle",
+    "date": "2022-01-16"
+}
+{
+    "professor": "Dr. Eugene Bergsma",
+    "semester": "WINTER22",
+    "course_num": "CMPUT174",
+    "overall_rate": 1,
+    "difficulty": 4,
+    "usefulness": 4,
+    "workload": 5,
+    "interest": 1,
+    "comment": "Dolorem eius quisquam dolore non porro consectetur etincidunt. Neque tempora voluptatem dolore sit dolor. Neque aliquam consectetur velit quiquia magnam consectetur labore. Est dolorem voluptatem ut quiquia. Ut ipsum dolore quaerat voluptatem eius. Amet est velit ut aliquam est eius. Magnam quaerat porro voluptatem.",
+    "ccid": "ebergsma",
+    "date": "2022-01-16"
+}
+{
+    "professor": "Dr. Zofia Fain",
+    "semester": "FALL21",
+    "course_num": "CMPUT174",
+    "overall_rate": 2,
+    "difficulty": 5,
+    "usefulness": 3,
+    "workload": 4,
+    "interest": 2,
+    "comment": "Etincidunt magnam adipisci est porro aliquam porro. Velit velit magnam dolorem quisquam. Adipisci sed est neque magnam. Dolor porro sed ut magnam etincidunt consectetur adipisci. Modi est quiquia tempora dolor est dolorem quaerat. Dolore est sed voluptatem voluptatem amet ut ipsum. Amet quisquam magnam ipsum modi porro tempora velit. Adipisci ipsum magnam ipsum tempora ipsum. Neque etincidunt dolorem etincidunt non aliquam ipsum.",
+    "ccid": "zofain",
+    "date": "2022-01-16"
+}
+{
+    "professor": "Dr. Jane Duby",
+    "semester": "SUMMER19",
+    "course_num": "CMPUT401",
+    "overall_rate": 1,
+    "difficulty": 1,
+    "usefulness": 3,
+    "workload": 2,
+    "interest": 5,
+    "comment": "Eius porro numquam quaerat. Non est sit consectetur consectetur dolore quiquia ipsum. Neque neque ut dolor quiquia aliquam. Tempora modi labore dolore dolor. Non sit neque tempora adipisci dolore sit labore. Ipsum sed non sed eius labore.",
+    "ccid": "jduby",
+    "date": "2022-01-16"
+}
+{
+    "professor": "Dr. Celia Magallan",
+    "semester": "WINTER19",
+    "course_num": "CMPUT174",
+    "overall_rate": 3,
+    "difficulty": 2,
+    "usefulness": 2,
+    "workload": 4,
+    "interest": 1,
+    "comment": "Numquam porro quisquam numquam tempora. Dolor modi voluptatem consectetur tempora numquam. Porro est modi ut labore labore aliquam sed. Labore sed est porro est velit adipisci. Porro modi velit aliquam.",
+    "ccid": "celmagallan",
+    "date": "2022-01-16"
+}
+{
+    "professor": "Dr. Larry May",
+    "semester": "SUMMER19",
+    "course_num": "CMPUT174",
+    "overall_rate": 2,
+    "difficulty": 3,
+    "usefulness": 3,
+    "workload": 3,
+    "interest": 2,
+    "comment": "Etincidunt etincidunt ut eius. Labore eius modi quiquia modi. Dolorem porro quaerat dolorem. Quisquam velit quiquia aliquam quiquia. Sed porro sed neque. Quisquam numquam quiquia sed. Magnam quaerat tempora quiquia porro dolor neque amet. Neque tempora dolore sed est tempora. Etincidunt quaerat modi dolore voluptatem. Ipsum dolore modi porro quaerat etincidunt dolorem.",
+    "ccid": "larrmay",
+    "date": "2022-01-16"
+}
+{
+    "professor": "Dr. Allison Yoshimura",
+    "semester": "WINTER19",
+    "course_num": "CMPUT174",
+    "overall_rate": 4,
+    "difficulty": 1,
+    "usefulness": 2,
+    "workload": 5,
+    "interest": 2,
+    "comment": "Non consectetur amet quisquam. Quiquia adipisci ut etincidunt. Dolorem dolore eius est consectetur ut est. Etincidunt porro dolorem modi. Labore aliquam quaerat velit adipisci magnam dolorem non. Dolorem adipisci velit porro porro. Consectetur adipisci etincidunt etincidunt ipsum dolore porro quisquam. Etincidunt labore neque consectetur magnam tempora eius voluptatem. Sed adipisci modi sed aliquam non. Sit quaerat quiquia ipsum eius labore quisquam tempora.",
+    "ccid": "alliyoshimur",
+    "date": "2022-01-16"
+}
+{
+    "professor": "Dr. Lisa Holmes",
+    "semester": "FALL19",
+    "course_num": "CMPUT174",
+    "overall_rate": 3,
+    "difficulty": 1,
+    "usefulness": 3,
+    "workload": 2,
+    "interest": 2,
+    "comment": "Velit tempora velit velit numquam quaerat. Ut amet dolorem ipsum amet ut ipsum modi. Sit velit labore labore dolor non. Neque adipisci sed sed porro voluptatem dolor aliquam. Ipsum labore modi eius ipsum porro voluptatem. Neque quisquam amet quiquia. Dolor adipisci magnam aliquam. Sed ut non dolor quisquam numquam.",
+    "ccid": "liholmes",
+    "date": "2022-01-16"
+}
+{
+    "professor": "Dr. Charles Thomas",
+    "semester": "SPRING21",
+    "course_num": "CMPUT174",
+    "overall_rate": 3,
+    "difficulty": 3,
+    "usefulness": 2,
+    "workload": 1,
+    "interest": 3,
+    "comment": "Etincidunt velit consectetur aliquam quiquia dolor. Quisquam neque porro dolore ipsum. Etincidunt consectetur dolore velit sed etincidunt. Modi ipsum etincidunt dolore consectetur. Etincidunt amet modi sit dolorem labore etincidunt. Velit quisquam labore quaerat quaerat dolore amet. Dolor dolore modi consectetur quiquia. Etincidunt neque adipisci quiquia aliquam quiquia dolor modi. Quaerat tempora quiquia quaerat velit velit quiquia aliquam.",
+    "ccid": "charthomas",
+    "date": "2022-01-16"
+}
