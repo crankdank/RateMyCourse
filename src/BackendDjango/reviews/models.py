@@ -42,4 +42,6 @@ class Review(models.Model):
 
     date = models.DateField(auto_now_add=True, null=True)
 
+    ccid = models.IntegerField(max_length=6)
+
 # * Date/Time field
