@@ -1,6 +1,7 @@
 * Course
 
 a) subject/
+URL: http://localhost:8000/subject/
 - GET   
     returns the list of all courses
 Example Return:
@@ -26,6 +27,7 @@ Example Return:
 #+END_SRC
 
 b) subject/<str:subject_name>/
+URL:http://localhost:8000/subject/CMPUT/
 - GET   
     returns a list of courses in the given subject
 
@@ -48,11 +50,29 @@ Example Return:
 #+END_SRC
 
 c) subject/<str:subject_name>/number/<str:course_num>/
+URL: http://localhost:8000/subject/CMPUT/
 - GET
     returns a list containing only the selected course; If the course does not exist, return empty list
 
 - POST
     post a new course
+
+** Example POST Json Body:
+#+BEGIN_SRC json
+{
+    "faculty": "Faculty of Science",
+    "subject": "CMPUT",
+    "course_num": "175",
+    "average_workload": 2.0,
+    "average_interest": 2.0,
+    "average_usefulness": 2.0,
+    "average_difficulty": 2.0,
+    "grade": 2,
+    "rating": 60,
+    "assignedProfs": "TBA",
+    "hasLab": false
+}
+#+END_SRC
 
 Example Return:
 #+BEGIN_SRC json
@@ -78,6 +98,7 @@ Example Return:
 
 
 d) subject/<str:subject_name>/number/<str:course_num>/rate/
+URL:http://localhost:8000/subject/CMPUT/number/174/rate/
 - GET
     returns the scores of the selected course
 #+BEGIN_SRC json
