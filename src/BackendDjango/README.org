@@ -1,24 +1,26 @@
 *** Course
 
-1. courses/
+a) courses/
+- GET   
+    returns the list of all courses (list of json)
 
-- GET
+b) courses/<str:course_num>/
+- GET   
+    returns the detail of course with the given course_num
+    if course exist:
+        returns a list containing only one json object (ie, something like [{...}])
+    else:
+        returns an empty list
 
-2. courses/<str:course_num>/
-
-- GET
 - POST
 
-3. courses/<str:course_num>/reviews/
-
+c) courses/<str:course_num>/reviews/
 - GET
 
-4. courses/<str:course_num>/rate/
-
+d) courses/<str:course_num>/rate/
 - GET
 
 - Example Course Json Format:
-
 #+BEGIN_SRC json
 {
 "faculty" : "Department of Computer Science",
