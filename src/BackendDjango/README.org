@@ -1,6 +1,7 @@
 * Course
 
 a) subject/
+URL: http://localhost:8000/subject/
 - GET   
     returns the list of all courses
 Example Return:
@@ -26,6 +27,7 @@ Example Return:
 #+END_SRC
 
 b) subject/<str:subject_name>/
+URL:http://localhost:8000/subject/CMPUT/
 - GET   
     returns a list of courses in the given subject
 
@@ -47,12 +49,30 @@ Example Return:
 ]
 #+END_SRC
 
-c) subject/\<str:subject_name>/number/<str:course_num>/
+c) subject/<str:subject_name>/number/<str:course_num>/
+URL: http://localhost:8000/subject/CMPUT/
 - GET
     returns a list containing only the selected course; If the course does not exist, return empty list
 
 - POST
     post a new course
+
+** Example POST Json Body:
+#+BEGIN_SRC json
+{
+    "faculty": "Faculty of Science",
+    "subject": "CMPUT",
+    "course_num": "175",
+    "average_workload": 2.0,
+    "average_interest": 2.0,
+    "average_usefulness": 2.0,
+    "average_difficulty": 2.0,
+    "grade": 2,
+    "rating": 60,
+    "assignedProfs": "TBA",
+    "hasLab": false
+}
+#+END_SRC
 
 Example Return:
 #+BEGIN_SRC json
@@ -78,6 +98,7 @@ Example Return:
 
 
 d) subject/<str:subject_name>/number/<str:course_num>/rate/
+URL:http://localhost:8000/subject/CMPUT/number/174/rate/
 - GET
     returns the scores of the selected course
 #+BEGIN_SRC json
@@ -91,20 +112,86 @@ d) subject/<str:subject_name>/number/<str:course_num>/rate/
 #+END_SRC
 
 * Review:
-a) URL: http://localhost:8000/courses/CMPUT174/reviews/
-GET: It will get all the reviews for CMPUT174 course
+a) URL: http://localhost:8000/subject/CMPUT/number/174/reviews/
+GET: It will get a list of all the reviews for the course
+** Example Return Json:
+#+BEGIN_SRC json
+[
+    {
+    "professor": "Dr.T", 
+    "semester": "WINTER", 
+    "course_num": "CMPUT174", 
+    "overall_rate": 1, 
+    "difficulty": 1, 
+    "usefulness": 1, 
+    "workload": 1, 
+    "interest": 1, 
+    "comment": "123", 
+    "date": "2022-01-16"
+    }
+]
+#+END_SRC
 
-POST: It will add a review for CMPUT174 course
-** Example Review Json Format:
+POST: It will add a review for a course
+** Example POST Json Body:
 #+BEGIN_SRC json
 {
-"course_num":"CMPUT174",
-"professor": "Dr.12345",
-"semester": "WINTER",
-"overall_rate":"5",
-"diffculty":"Hard"
+    
+    "professor": "Dr.T", 
+    "semester": "WINTER", 
+    "course_num": "CMPUT174", 
+    "overall_rate": 1, 
+    "difficulty": 1, 
+    "usefulness": 1, 
+    "workload": 1, 
+    "interest": 1, 
+    "comment": "123", 
 }
 #+END_SRC
 
+
+
 b) URL: http://localhost:8000/reviews/
-GET: It will prompt out all the reviews in this RMC website
+GET: It will prompt out a list of all the reviews in this RMC website
+
+** Example Return Json:
+#+BEGIN_SRC json
+[
+    {
+        "professor": "Dr.T",
+        "semester": "WINTER",
+        "course_num": "CMPUT174",
+        "overall_rate": 1,
+        "difficulty": 1,
+        "usefulness": 1,
+        "workload": 1,
+        "interest": 1,
+        "comment": "123",
+        "date": "2022-01-16"
+    },
+    {
+        "professor": "Dr.T",
+        "semester": "WINTER",
+        "course_num": "CMPUT174",
+        "overall_rate": 1,
+        "difficulty": 1,
+        "usefulness": 1,
+        "workload": 1,
+        "interest": 1,
+        "comment": "new_one",
+        "date": "2022-01-16"
+    },
+    {
+        "professor": "Dr.T",
+        "semester": "WINTER",
+        "course_num": "CMPUT174",
+        "overall_rate": 1,
+        "difficulty": 1,
+        "usefulness": 1,
+        "workload": 1,
+        "interest": 1,
+        "comment": "absolutrly_new",
+        "date": "2022-01-16"
+    }
+]
+#+END_SRC
