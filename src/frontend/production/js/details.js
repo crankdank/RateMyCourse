@@ -17,7 +17,7 @@ async function populate() {
     "hasLab": false
   }
 
-  //courseInfo = (await (await fetch(`http://localhost:8000/subject/${subject}/number/${courseNumber}`)).json())[0];
+  courseInfo = (await (await fetch(`http://localhost:8000/subject/${subject}/number/${courseNumber}`)).json())[0];
 
   const data = {
     datasets: [{
@@ -50,7 +50,7 @@ async function populate() {
   );
 
   document.querySelector("p.back").addEventListener("click", (e) => {
-    window.open("/", "_self");
+    window.open("./", "_self");
   })
 
   // Set all course data
