@@ -91,28 +91,26 @@ textarea {
    ========================================================================== */
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
 }
 
-.main {
-  height: 100%;
-  width: 100%;
-
-  display: grid;
-  grid-template-rows: 4fr 3fr;
-  grid-template-columns: 1fr;
+div.content {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
   font-family: Akkurat-Mono, sans-serif;
 }
 
-.top-content {
+div.title {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  margin: 2rem 0;
 }
 
 img.logo {
@@ -120,126 +118,63 @@ img.logo {
 }
 
 h1 {
-  font-family: "Summer Loving", sans-serif;
   font-size: 8rem;
-  line-height: 8rem;
+  font-family: "Summer Loving", sans-serif;
   font-weight: normal;
+  line-height: 8rem;
 
-  color: var(--black);
-
-  margin-top: 1rem;
-  margin-bottom: 3rem;
+  margin: 2rem 0 0;
 }
 
-.search-container {
+h3 {
+  font-size: 2rem;
+}
+
+div.stats {
   display: flex;
   flex-direction: row;
 
-  margin-bottom: 0.5rem;
-}
-
-div.input-background {
-  margin: 0 0.5rem;
-  background-color: var(--bgWhite);
-
-  border: 2px solid var(--black);
-  border-radius: 0.8rem;
-
-  filter: drop-shadow(0 4px 0 var(--black));
-
-  transition: all 0.2s ease;
-}
-
-div.input-background:focus-within {
-  filter: drop-shadow(0 0px 0 var(--black));
-  transform: translateY(4px);
-}
-
-input.search-input {
-  border: 0;
-  background: transparent;
-  padding: 0.9rem;
-
-  font-size: 1.7rem;
-}
-
-input:focus {
-  outline: none;
-  text-decoration: none;
-}
-
-.course {
-  width: 10rem;
-}
-
-.number {
-  width: 4rem;
-  text-align: center;
-}
-
-p.search {
-  font-size: 1.2rem;
-  color: var(--black);
-}
-
-p.search:hover {
-  cursor: pointer;
-}
-
-.underline-text {
-  display: inline-block;
-  position: relative;
-}
-
-.underline-text:after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--black);
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-
-.white-underline:after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--bgWhite);
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-
-.underline-text:hover:after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-.bottom-content {
-  width: 100%;
-  height: 100%;
-  background-image: url("/img/waves1.png");
-
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-p.post-review {
-  color: var(--bgWhite);
-  font-size: 1.2rem;
+div.quicklook-section {
+  margin: 0 5rem;
 }
 
-p.post-review:hover {
-  cursor: pointer;
+div.chart {
+  display: ;
+}
+
+
+div.rating {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+}
+
+p.big-digit {
+  font-size: 4rem;
+  font-family: "Summer Loving", sans-serif;
+}
+p.small-digit {
+  font-size: 1rem;
+  font-family: Akkurat-Mono, sans-serif;
+}
+p.category {
+  font-size: 1rem;
+  font-family: Akkurat-Mono, sans-serif;
+
+  justify-self: end;
+}
+
+div.table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 6rem;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ==========================================================================

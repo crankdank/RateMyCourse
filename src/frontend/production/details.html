@@ -12,7 +12,7 @@
   <meta property="og:url" content="">
   <meta property="og:image" content="">
 
-  <link rel="manifest" href="site.webmanifest">
+  <!--<link rel="manifest" href="site.webmanifest">-->
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
 
@@ -23,9 +23,58 @@
 </head>
 
 <body>
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
+  <div class="content">
+    <div class="title">
+      <img src="/img/ua_logo_green_rgb.png" alt="University of Alberta Logo" class="logo">
+      <h1 id="title">CMPUT 401</h1>
+      <h2 id="fac">Faculty of Science</h2>
+    </div>
+    <div class="stats">
+      <div class="quicklook-section overall">
+        <h3>OVERALL RATING</h3>
+        <div class="chart">
+          <canvas id="doughnutChart">
+          </canvas>
+          <div class="rating">
+            <p class="big-digit">4.5</p>
+            <p class="small-digit">/5</p>
+          </div>
+        </div>
+      </div>
+      <div class="quicklook-section breakdown">
+        <h3>RATING BREAKDOWN</h3>
+        <div class="table">
+          <p class="category">DIFFICULTY</p>
+          <div class="rating">
+            <p class="big-digit">2.0</p>
+            <p class="small-digit">/5</p>
+          </div>
+          <p class="category">USEFULNESS</p>
+          <div class="rating">
+            <p class="big-digit">5.0</p>
+            <p class="small-digit">/5</p>
+          </div>
+          <p class="category">WORKLOAD</p>
+          <div class="rating">
+            <p class="big-digit">3.1</p>
+            <p class="small-digit">/5</p>
+          </div>
+          <p class="category">INTEREST</p>
+          <div class="rating">
+            <p class="big-digit">4.5</p>
+            <p class="small-digit">/5</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews">
+
+    </div>
+  </div>
+
+
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/details.js"></script>
 </body>
