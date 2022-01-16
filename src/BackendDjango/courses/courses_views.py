@@ -33,12 +33,11 @@ def all_courses(request):
 # courses/<str:course_num>/
 @api_view(['GET', 'POST'])
 def get_or_post_course(request, subject_name, course_num):
-    course_num = subject_name + course_num
     if request.method == 'GET':
         try:
             # course = Course.objects.filter(course_num=course_num)
-            complete_name = subject_name+course_num
-            course = Course.objects.filter(course_num=course_num)
+            course = Course.objects.filter(
+                subject=subject_name).filter(course_num=course_num)
             # except Review.DoesNotExist:
             #     return JsonResponse({"error": "review is not found"}, status=status.HTTP_404_NOT_FOUND)
             course_json = CourseSerializer(course, many=True)
@@ -107,7 +106,6 @@ def landing_function(request, subject_name):
             all_related_courses[i].average_usefulness = result["usefulness"]
             all_related_courses[i].average_interest = result["interest"]
         courses_afterjson = CourseSerializer(all_related_courses, many=True)
-
         return JsonResponse(courses_afterjson.data, status=status.HTTP_200_OK, safe=False)
     else:
         return JsonResponse(status=status.HTTP_405_METHOD_NOT_ALLOWED)

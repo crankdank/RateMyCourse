@@ -12,7 +12,9 @@ class Review(models.Model):
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=True, unique=True)
 
-    course_num = models.CharField(max_length=20, null=True)
+    # for now the course_num here includes the subject of courses (eg, CMPUT174)
+    # will fix it later
+    course_num = models.CharField(max_length=20, blank=False, null=True)
 
     professor = models.CharField(max_length=30)
 
