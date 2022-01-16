@@ -21,9 +21,16 @@ from courses import courses_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # review section url
     path('reviews/', reviews_views.all_reviews, name="all_reviews"),
-    path('courses/<str:course_num>/', courses_views.get_course, name="get_course"),
     path('courses/<str:course_num>/reviews/',
          reviews_views.post_reviews, name="post_reviews"),
-    path('courses/', courses_views.all_courses, name="all_courses")
+    # course secrion url
+
+    path('courses/<str:course_num>/rate/',
+         courses_views.get_course_rate, name="get_course_rate"),
+    path('courses/<str:course_num>/',
+         courses_views.get_or_post_course, name="get_or_post_course"),
+    path('courses/', courses_views.all_courses, name="all_courses"),
+
 ]
