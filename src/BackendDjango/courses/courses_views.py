@@ -1,3 +1,4 @@
+from ast import Sub
 import imp
 from tkinter import E
 from django.shortcuts import render
@@ -23,6 +24,13 @@ from reviews.serializers import ReviewSerializer
 def all_courses(request):
     try:
         courses = Course.objects.all()
+        for i in range(0, len(courses)):
+            result = rate_help_function(courses[i].subject, courses[i].course_num)
+            courses[i].average_workload = result["workload"]
+            courses[i].average_difficulty = result["difficulty"]
+            courses[i].average_usefulness = result["usefulness"]
+            courses[i].average_interest = result["interest"]
+            courses[i].average_overall = result["overall"]
     except Course.DoesNotExist:
         return JsonResponse({"error": "courses not found"}, status=status.HTTP_404_NOT_FOUND)
 
@@ -36,11 +44,19 @@ def get_or_post_course(request, subject_name, course_num):
     if request.method == 'GET':
         try:
             # course = Course.objects.filter(course_num=course_num)
-            course = Course.objects.filter(
+            courses = Course.objects.filter(
                 subject=subject_name).filter(course_num=course_num)
             # except Review.DoesNotExist:
             #     return JsonResponse({"error": "review is not found"}, status=status.HTTP_404_NOT_FOUND)
-            course_json = CourseSerializer(course, many=True)
+            for i in range(0, len(courses)):
+                result = rate_help_function(courses[i].subject, courses[i].course_num)
+                courses[i].average_workload = result["workload"]
+                courses[i].average_difficulty = result["difficulty"]
+                courses[i].average_usefulness = result["usefulness"]
+                courses[i].average_interest = result["interest"]
+                courses[i].average_overall = result["overall"]
+
+            course_json = CourseSerializer(courses, many=True)
             return JsonResponse(course_json.data, status=status.HTTP_200_OK, safe=False)
         except Course.DoesNotExist:
             return JsonResponse({"error": "reviews not found"}, status=status.HTTP_404_NOT_FOUND)
@@ -65,8 +81,8 @@ def get_course_rate(request, subject_name, course_num):
     if request.method == 'GET':
         # get all reviews for
         # difficulty, usefulness, workload, interest
-        course_code = subject_name + course_num
-        all_review = Review.objects.filter(course_num=course_code)
+        #course_code = subject_name + course_num
+        all_review = Review.objects.filter(subject=subject_name).filter(course_num=course_num)
         if len(all_review) == 0:
             return JsonResponse({"Warn": "This course does not have rate yet"}, status=status.HTTP_404_NOT_FOUND)
 
@@ -80,7 +96,7 @@ def get_course_rate(request, subject_name, course_num):
 
         # print(sum)
         rates = dict([(key, sum[key] / num_of_review) for key in sum.keys()])
-        rates["aggregate"] = ((10 - rates["difficulty"] - rates["workload"]
+        rates["overall"] = ((10 - rates["difficulty"] - rates["workload"]
                                ) + rates["usefulness"] + rates["interest"]) / 4
         #review_afterjson = ReviewSerializer(all_review, many=True)
         return JsonResponse(rates, status=status.HTTP_200_OK, safe=False)
@@ -96,27 +112,25 @@ def landing_function(request, subject_name):
         if len(all_related_courses) == 0:
             return JsonResponse({"Warn": "Courses like this does not exist"}, status=status.HTTP_404_NOT_FOUND)
         for i in range(0, len(all_related_courses)):
-            complete_name = all_related_courses[i].subject + \
-                all_related_courses[i].course_num
-            print(complete_name)
-            result = rate_help_function(complete_name)
-            print(result)
+            result = rate_help_function(all_related_courses[i].subject, all_related_courses[i].course_num)
+
             all_related_courses[i].average_workload = result["workload"]
             all_related_courses[i].average_difficulty = result["difficulty"]
             all_related_courses[i].average_usefulness = result["usefulness"]
             all_related_courses[i].average_interest = result["interest"]
+            all_related_courses[i].average_overall = result["overall"]
         courses_afterjson = CourseSerializer(all_related_courses, many=True)
         return JsonResponse(courses_afterjson.data, status=status.HTTP_200_OK, safe=False)
     else:
         return JsonResponse(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
-def rate_help_function(complete_name):
-    reviews = Review.objects.filter(course_num=complete_name)
+def rate_help_function(subject_name, course_num):
+    reviews = Review.objects.filter(subject=subject_name).filter(course_num=course_num)
     if len(reviews) == 0:
-        return {"difficulty": 0, "usefulness": 0, "workload": 0, "interest": 0}
+        return {"difficulty": 0, "usefulness": 0, "workload": 0, "interest": 0, "overall": 0}
 
-    sum = {"difficulty": 0, "usefulness": 0, "workload": 0, "interest": 0}
+    sum = {"difficulty": 0, "usefulness": 0, "workload": 0, "interest": 0, "overall": 0}
     for i in range(0, len(reviews)):
         sum["difficulty"] += reviews[i].difficulty
         sum["usefulness"] += reviews[i].usefulness
@@ -126,5 +140,6 @@ def rate_help_function(complete_name):
     sum["usefulness"] /= len(reviews)
     sum["workload"] /= len(reviews)
     sum["interest"] /= len(reviews)
+    sum["overall"] = ((5 - sum["difficulty"]) + (5 - sum["workload"]) + sum["interest"] + sum["usefulness"]) / 4
     average = sum
     return average
