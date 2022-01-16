@@ -47,7 +47,7 @@ Example Return:
 ]
 #+END_SRC
 
-c) subject/\<str:subject_name>/number/<str:course_num>/
+c) subject/<str:subject_name>/number/<str:course_num>/
 - GET
     returns a list containing only the selected course; If the course does not exist, return empty list
 
