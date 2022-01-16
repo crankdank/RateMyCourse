@@ -12,15 +12,6 @@ import uuid
 
 class Course(models.Model):
     # field in db
-<<<<<<< HEAD
-    id = models.UUIDField(
-        primary_key=True, default=uuid.uuid4, editable=False, unique=True)
-
-    prefix = models.CharField(max_length=10, default="CMPUT")
-    courseCode = models.CharField(max_length=5)
-    title = models.CharField(max_length=50)
-    topics = models.CharField(max_length=200)
-=======
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     
     faculty = models.CharField(max_length=30, default="Faculty of Science") 
@@ -35,4 +26,3 @@ class Course(models.Model):
 
     assignedProfs = models.CharField(max_length=200, default="TBA")
     hasLab = models.BooleanField(default=False)
->>>>>>> c0e3d36703c1cab019123c6b42ba27516338ed11
