@@ -18,7 +18,7 @@ c) courses/<str:course_num>/rate/
 #+BEGIN_SRC json
 {
     "faculty" : "Department of Computer Science",
-    "course_num" : "CMPUT174,
+    "course_num" : "CMPUT174",
     "title" : "Introduction to CS",
     "topics" : "I am groot, I am groot~!",
     "difficulty" : 5,
