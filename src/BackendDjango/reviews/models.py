@@ -1,5 +1,4 @@
 from django.db import models
-from django.db import models
 import uuid
 from django.core.validators import MinValueValidator, MaxValueValidator
 
@@ -8,7 +7,9 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 class Review(models.Model):
     # field in db
     id = models.UUIDField(
-        primary_key=True, default=uuid.uuid4, editable=False, unique=True)
+        primary_key=True, default=uuid.uuid4, editable=True, unique=True)
+
+    course_num = models.CharField(max_length=20, blank=False)
 
     professor = models.CharField(max_length=30)
 
