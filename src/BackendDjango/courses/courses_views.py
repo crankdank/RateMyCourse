@@ -97,6 +97,8 @@ def landing_function(request, subject_name):
             return JsonResponse({"Warn": "Courses like this does not exist"}, status=status.HTTP_404_NOT_FOUND)
         print(all_related_courses)
         courses_afterjson = CourseSerializer(all_related_courses, many=True)
+        course_json = courses_afterjson.data
+        course_json["aggregate"] = 5
         return JsonResponse(courses_afterjson.data, status=status.HTTP_200_OK, safe=False)
     else:
         return JsonResponse(status=status.HTTP_405_METHOD_NOT_ALLOWED)
